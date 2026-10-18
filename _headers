@@ -1,0 +1,7 @@
+# Cloudflare Pages: ofertas mudam a todo momento, sem cache longo
+/deals.js
+  Cache-Control: no-cache
+/deals.json
+  Cache-Control: no-cache
+/
+  Cache-Control: no-cache

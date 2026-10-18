@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 70" width="100%" height="100%">
+  <defs>
+    <linearGradient id="hTopOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFA100"/>
+      <stop offset="100%" stop-color="#FF5500"/>
+    </linearGradient>
+
+    <linearGradient id="hBottomRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF3B30"/>
+      <stop offset="100%" stop-color="#D91E18"/>
+    </linearGradient>
+
+    <linearGradient id="hBlade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#FFD600"/>
+      <stop offset="100%" stop-color="#FF4500"/>
+    </linearGradient>
+
+    <filter id="hGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <clipPath id="hClipTop">
+      <polygon points="0,0 70,0 70,22 0,42"/>
+    </clipPath>
+    <clipPath id="hClipBottom">
+      <polygon points="0,42 70,22 70,70 0,70"/>
+    </clipPath>
+  </defs>
+
+  <!-- Left Sliced Icon Emblem -->
+  <g transform="translate(4, 5)">
+    <!-- Top Half (Shifted Up/Left) -->
+    <g clip-path="url(#hClipTop)" transform="translate(-1.5, -2)">
+      <circle cx="24" cy="22" r="7" fill="url(#hTopOrange)"/>
+      <circle cx="24" cy="22" r="3.5" fill="#0B0F19"/>
+      <line x1="48" y1="14" x2="16" y2="46" stroke="url(#hTopOrange)" stroke-width="7" stroke-linecap="round"/>
+    </g>
+
+    <!-- Bottom Half (Shifted Down/Right) -->
+    <g clip-path="url(#hClipBottom)" transform="translate(2, 2.5)">
+      <line x1="48" y1="14" x2="16" y2="46" stroke="url(#hBottomRed)" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="40" cy="38" r="7" fill="url(#hBottomRed)"/>
+      <circle cx="40" cy="38" r="3.5" fill="#0B0F19"/>
+    </g>
+
+    <!-- Laser Blade Slash -->
+    <line x1="2" y1="43" x2="62" y2="21" stroke="url(#hBlade)" stroke-width="2.2" stroke-linecap="round" filter="url(#hGlow)"/>
+    <circle cx="32" cy="32" r="1.5" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Right Typography -->
+  <g transform="translate(74, 0)">
+    <text x="0" y="36" 
+          font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" 
+          font-size="23" 
+          font-weight="900" 
+          letter-spacing="0.5" 
+          fill="#FFFFFF">
+      MENOS DA METADE
+    </text>
+
+    <!-- Subtle cut underline decoration -->
+    <line x1="0" y1="43" x2="215" y2="43" stroke="#FF5500" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+
+    <text x="0" y="58" 
+          font-family="'Plus Jakarta Sans', sans-serif" 
+          font-size="11" 
+          font-weight="700" 
+          letter-spacing="0.8" 
+          fill="#FF9E0B">
+      @menosdametade.oficial
+    </text>
+  </g>
+</svg>
