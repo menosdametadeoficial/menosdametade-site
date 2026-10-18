@@ -1,6 +1,6 @@
 window.DEALS_LIVE = [
   {
-    "id": 1792337290668,
+    "id": 1792338805259,
     "title": "Tenis New Balance Bb80 Unisex",
     "store": "amazon",
     "storeName": "Amazon",
@@ -15,10 +15,10 @@ window.DEALS_LIVE = [
     "category": "outros",
     "is50off": false,
     "verifiedMin": 1,
-    "timestamp": 1792337290
+    "timestamp": 1792338805
   },
   {
-    "id": 1792337290656,
+    "id": 1792338805244,
     "title": "3 Corações Café Torrado E Moído Extra Forte À Vácuo 250G",
     "store": "amazon",
     "storeName": "Amazon",
@@ -33,10 +33,10 @@ window.DEALS_LIVE = [
     "category": "outros",
     "is50off": false,
     "verifiedMin": 1,
-    "timestamp": 1792337290
+    "timestamp": 1792338805
   },
   {
-    "id": 1792337289335,
+    "id": 1792338803628,
     "title": "Fechadura Digital De Sobrepor FR 201 V Intelbras",
     "store": "amazon",
     "storeName": "Amazon",
@@ -51,10 +51,10 @@ window.DEALS_LIVE = [
     "category": "casa",
     "is50off": false,
     "verifiedMin": 1,
-    "timestamp": 1792337289
+    "timestamp": 1792338803
   },
   {
-    "id": 1792337288003,
+    "id": 1792338802463,
     "title": "Kit Sabonete, PHEBO, Amarelo, 720g",
     "store": "amazon",
     "storeName": "Amazon",
@@ -69,10 +69,10 @@ window.DEALS_LIVE = [
     "category": "outros",
     "is50off": false,
     "verifiedMin": 1,
-    "timestamp": 1792337288
+    "timestamp": 1792338802
   },
   {
-    "id": 1792337286642,
+    "id": 1792338801300,
     "title": "Achocolatado Em Cápsula Nescafé Dolce Gusto Kopenhagen Língua De Gato 10 Cápsulas",
     "store": "amazon",
     "storeName": "Amazon",
@@ -87,10 +87,10 @@ window.DEALS_LIVE = [
     "category": "outros",
     "is50off": false,
     "verifiedMin": 1,
-    "timestamp": 1792337286
+    "timestamp": 1792338801
   },
   {
-    "id": 1792337285230,
+    "id": 1792338799939,
     "title": "YESOP Torneira Cozinha Parede Gourmet Bancada Articulável Dobrável INOX 304",
     "store": "amazon",
     "storeName": "Amazon",
@@ -105,10 +105,10 @@ window.DEALS_LIVE = [
     "category": "casa",
     "is50off": false,
     "verifiedMin": 1,
-    "timestamp": 1792337285
+    "timestamp": 1792338799
   },
   {
-    "id": 1792337283915,
+    "id": 1792338798507,
     "title": "MTX Bolsa Para Ferramentas Com 18 Bolsos",
     "store": "amazon",
     "storeName": "Amazon",
@@ -123,10 +123,10 @@ window.DEALS_LIVE = [
     "category": "outros",
     "is50off": false,
     "verifiedMin": 1,
-    "timestamp": 1792337283
+    "timestamp": 1792338798
   },
   {
-    "id": 1792337282575,
+    "id": 1792338797104,
     "title": "Capa Lenovo Para Notebook - Urban Sleeve 15.6\" Cinza",
     "store": "amazon",
     "storeName": "Amazon",
@@ -141,10 +141,10 @@ window.DEALS_LIVE = [
     "category": "tech",
     "is50off": false,
     "verifiedMin": 1,
-    "timestamp": 1792337282
+    "timestamp": 1792338797
   },
   {
-    "id": 1792337281346,
+    "id": 1792338793569,
     "title": "Cappuccino De Chocolate Com Avelã, 200g",
     "store": "amazon",
     "storeName": "Amazon",
@@ -159,7 +159,7 @@ window.DEALS_LIVE = [
     "category": "outros",
     "is50off": false,
     "verifiedMin": 1,
-    "timestamp": 1792337281
+    "timestamp": 1792338793
   },
   {
     "id": 1792332881,
