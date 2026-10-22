@@ -225,6 +225,9 @@
       <button class="cat-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-orange-500 text-white shadow-md shadow-orange-500/20" data-cat="all">
         🔥 Todas as Ofertas
       </button>
+      <button class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" data-cat="top">
+        🏆 Principais Promoções <span id="topCount" class="ml-1 px-1.5 py-0.5 rounded-md bg-amber-400/20 text-amber-300 text-[10px] font-black"></span>
+      </button>
       <button class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" data-cat="50off">
         💥 50% OFF ou Mais
       </button>
@@ -252,10 +255,10 @@
     <div class="flex items-center justify-between mb-8">
       <div>
         <h2 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
-          <span>Oportunidades em Destaque</span>
+          <span id="feedTitle">Oportunidades em Destaque</span>
           <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Atualizadas Diariamente</span>
         </h2>
-        <p class="text-xs sm:text-sm text-slate-400 mt-1">Preço e estoque podem mudar a qualquer momento — confira sempre o valor final na loja.</p>
+        <p id="feedSubtitle" class="text-xs sm:text-sm text-slate-400 mt-1">Preço e estoque podem mudar a qualquer momento — confira sempre o valor final na loja.</p>
       </div>
 
       <div class="text-xs text-slate-400 hidden sm:block">
@@ -503,11 +506,31 @@
       return /^https?:\/\//i.test(url || '') ? esc(url) : '#';
     }
 
+    // Principais Promoções: 30% de desconto ou mais (marcado pelo robô; calcula se faltar)
+    const TOP_DISCOUNT = 30;
+    function isTop(deal) {
+      if (typeof deal.isTop === 'boolean') return deal.isTop;
+      const pct = parseInt(String(deal.discount || '').replace(/[^\d]/g, ''), 10);
+      return String(deal.discount || '').startsWith('-') && pct >= TOP_DISCOUNT;
+    }
+
+    const FEED_TEXTS = {
+      all: ['Oportunidades em Destaque', 'Preço e estoque podem mudar a qualquer momento — confira sempre o valor final na loja.'],
+      top: ['Principais Promoções', `Só ofertas com ${TOP_DISCOUNT}% de desconto ou mais, calculado pelo preço anterior informado pela loja.`]
+    };
+
     // Renderiza os Cards
     function renderDeals() {
+      const [title, subtitle] = FEED_TEXTS[currentCategory] || FEED_TEXTS.all;
+      document.getElementById('feedTitle').textContent = title;
+      document.getElementById('feedSubtitle').textContent = subtitle;
+      const topTotal = DEALS.filter(isTop).length;
+      document.getElementById('topCount').textContent = topTotal ? topTotal : '';
+
       const filtered = DEALS.filter(deal => {
         // Categoria
-        const matchCat = (currentCategory === 'all') 
+        const matchCat = (currentCategory === 'all')
+          || (currentCategory === 'top' && isTop(deal))
           || (currentCategory === '50off' && deal.is50off)
           || (deal.category === currentCategory);
 
@@ -543,7 +566,8 @@
           coupon: raw.coupon ? esc(raw.coupon) : null,
           image: safeUrl(raw.image),
           affiliateUrl: safeUrl(raw.affiliateUrl),
-          seenAt: formatSeenAt(raw.timestamp)
+          seenAt: formatSeenAt(raw.timestamp),
+          top: isTop(raw)
         };
         return `
         <article class="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden flex flex-col card-hover relative group">
@@ -556,6 +580,10 @@
             ${deal.is50off ? `
               <span class="px-2 py-0.5 rounded-lg text-[10px] font-extrabold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                 METADE OU MENOS
+              </span>
+            ` : deal.top ? `
+              <span class="px-2 py-0.5 rounded-lg text-[10px] font-extrabold bg-amber-400/20 text-amber-300 border border-amber-400/30">
+                🏆 PRINCIPAL
               </span>
             ` : ''}
           </div>
