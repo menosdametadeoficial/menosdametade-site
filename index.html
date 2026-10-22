@@ -55,6 +55,21 @@
       transform: translateY(-4px);
       box-shadow: 0 12px 24px -10px rgba(255, 107, 0, 0.25);
     }
+    .filter-select {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      color: #e2e8f0;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      min-width: 0;
+      cursor: pointer;
+    }
+    .filter-select:focus {
+      outline: none;
+      border-color: #f97316;
+    }
     .custom-scroll::-webkit-scrollbar {
       height: 6px;
     }
@@ -182,31 +197,55 @@
 
   <!-- ================= CATEGORY FILTER BAR ================= -->
   <section class="border-b border-slate-800/80 bg-slate-900/60">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-2 overflow-x-auto custom-scroll">
-      <button class="cat-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-orange-500 text-white shadow-md shadow-orange-500/20" data-cat="all">
-        🔥 Todas as Ofertas
-      </button>
-      <button class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" data-cat="top">
-        🏆 Principais Promoções <span id="topCount" class="ml-1 px-1.5 py-0.5 rounded-md bg-amber-400/20 text-amber-300 text-[10px] font-black"></span>
-      </button>
-      <button class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" data-cat="50off">
-        💥 50% OFF ou Mais
-      </button>
-      <button class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" data-cat="tech">
-        📱 Tech & Celulares
-      </button>
-      <button class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" data-cat="casa">
-        🍳 Casa & Cozinha
-      </button>
-      <button class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" data-cat="shopee">
-        🧡 Achadinhos Shopee
-      </button>
-      <button class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" data-cat="games">
-        🎮 Games & Setup
-      </button>
-      <button class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" data-cat="outros">
-        📦 Outros Achados
-      </button>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col lg:flex-row lg:items-center gap-3">
+
+      <!-- Abas -->
+      <div class="flex items-center gap-2 overflow-x-auto custom-scroll">
+        <button class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" data-cat="top">
+          🏆 Principais Ofertas <span id="topCount" class="ml-1 px-1.5 py-0.5 rounded-md bg-amber-400/20 text-amber-300 text-[10px] font-black"></span>
+        </button>
+        <button class="cat-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-orange-500 text-white shadow-md shadow-orange-500/20" data-cat="all">
+          🔥 Todas as Ofertas
+        </button>
+        <button class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" data-cat="50off">
+          💥 50% ou Mais
+        </button>
+      </div>
+
+      <!-- Filtros -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:flex lg:ml-auto items-center gap-2">
+        <label class="sr-only" for="sectorFilter">Setor</label>
+        <select id="sectorFilter" class="filter-select">
+          <option value="">Todos os setores</option>
+          <option value="tech">Tecnologia</option>
+          <option value="casa">Casa e Cozinha</option>
+          <option value="games">Games</option>
+          <option value="outros">Outros</option>
+        </select>
+
+        <label class="sr-only" for="discountFilter">Desconto mínimo</label>
+        <select id="discountFilter" class="filter-select">
+          <option value="0">Qualquer desconto</option>
+          <option value="20">20% ou mais</option>
+          <option value="30">30% ou mais</option>
+          <option value="40">40% ou mais</option>
+          <option value="50">50% ou mais</option>
+        </select>
+
+        <label class="sr-only" for="sortSelect">Ordenar por</label>
+        <select id="sortSelect" class="filter-select">
+          <option value="recent">Mais recentes</option>
+          <option value="discount">Maior desconto</option>
+          <option value="price-desc">Maior preço</option>
+          <option value="price-asc">Menor preço</option>
+          <option value="popular">Mais procurados</option>
+        </select>
+
+        <button id="clearFilters" class="px-3 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-400 hover:text-white bg-slate-800/60 hover:bg-slate-700 transition whitespace-nowrap">
+          <i class="fa-solid fa-xmark mr-1"></i>Limpar
+        </button>
+      </div>
+
     </div>
   </section>
 
@@ -423,6 +462,9 @@
 
     let currentCategory = 'all';
     let searchQuery = '';
+    let currentSector = '';
+    let minDiscount = 0;
+    let sortBy = 'recent';
 
     const dealsGrid = document.getElementById('dealsGrid');
     const emptyState = document.getElementById('emptyState');
@@ -467,17 +509,36 @@
       return /^https?:\/\//i.test(url || '') ? esc(url) : '#';
     }
 
-    // Principais Promoções: 30% de desconto ou mais (marcado pelo robô; calcula se faltar)
+    // "R$ 1.709,10" -> 1709.1
+    function parsePrice(text) {
+      const clean = String(text || '').replace(/[^\d,]/g, '').replace(',', '.');
+      return parseFloat(clean) || 0;
+    }
+
+    // Desconto real em %, calculado pelo preço anterior x atual
+    function discountPct(deal) {
+      const old = parsePrice(deal.oldPrice), price = parsePrice(deal.price);
+      return old > price && price > 0 ? Math.round((1 - price / old) * 100) : 0;
+    }
+
+    // Principais Ofertas: 30% de desconto ou mais
     const TOP_DISCOUNT = 30;
     function isTop(deal) {
-      if (typeof deal.isTop === 'boolean') return deal.isTop;
-      const pct = parseInt(String(deal.discount || '').replace(/[^\d]/g, ''), 10);
-      return String(deal.discount || '').startsWith('-') && pct >= TOP_DISCOUNT;
+      return typeof deal.isTop === 'boolean' ? deal.isTop : discountPct(deal) >= TOP_DISCOUNT;
     }
 
     const FEED_TEXTS = {
       all: ['Oportunidades em Destaque', 'Preço e estoque podem mudar a qualquer momento. Confira sempre o valor final na loja.'],
-      top: ['Principais Promoções', `Só ofertas com ${TOP_DISCOUNT}% de desconto ou mais, calculado pelo preço anterior informado pela loja.`]
+      top: ['Principais Ofertas', `Só ofertas com ${TOP_DISCOUNT}% de desconto ou mais, calculado pelo preço anterior informado pela loja.`],
+      '50off': ['50% ou Mais', 'Ofertas pela metade do preço ou menos, calculado pelo preço anterior informado pela loja.']
+    };
+
+    const SORTERS = {
+      recent: (a, b) => (b.timestamp || 0) - (a.timestamp || 0),
+      discount: (a, b) => discountPct(b) - discountPct(a),
+      'price-desc': (a, b) => parsePrice(b.price) - parsePrice(a.price),
+      'price-asc': (a, b) => parsePrice(a.price) - parsePrice(b.price),
+      popular: (a, b) => (b.popularity || 0) - (a.popularity || 0)
     };
 
     // Renderiza os Cards
@@ -489,11 +550,14 @@
       document.getElementById('topCount').textContent = topTotal ? topTotal : '';
 
       const filtered = DEALS.filter(deal => {
-        // Categoria
+        // Aba
         const matchCat = (currentCategory === 'all')
           || (currentCategory === 'top' && isTop(deal))
-          || (currentCategory === '50off' && deal.is50off)
-          || (deal.category === currentCategory);
+          || (currentCategory === '50off' && discountPct(deal) >= 50);
+
+        // Filtros
+        if (currentSector && deal.category !== currentSector) return false;
+        if (minDiscount && discountPct(deal) < minDiscount) return false;
 
         // Busca
         const query = searchQuery.toLowerCase().trim();
@@ -503,7 +567,7 @@
           || (deal.coupon && deal.coupon.toLowerCase().includes(query));
 
         return matchCat && matchSearch;
-      });
+      }).sort(SORTERS[sortBy] || SORTERS.recent);
 
       dealCount.textContent = filtered.length;
 
@@ -684,6 +748,28 @@
 
     searchInput.addEventListener('input', handleSearch);
     searchInputMobile.addEventListener('input', handleSearch);
+
+    // Filtros de setor, desconto e ordenação
+    const sectorFilter = document.getElementById('sectorFilter');
+    const discountFilter = document.getElementById('discountFilter');
+    const sortSelect = document.getElementById('sortSelect');
+
+    sectorFilter.addEventListener('change', () => { currentSector = sectorFilter.value; renderDeals(); });
+    discountFilter.addEventListener('change', () => { minDiscount = parseInt(discountFilter.value, 10) || 0; renderDeals(); });
+    sortSelect.addEventListener('change', () => { sortBy = sortSelect.value; renderDeals(); });
+
+    document.getElementById('clearFilters').addEventListener('click', () => {
+      sectorFilter.value = '';
+      discountFilter.value = '0';
+      sortSelect.value = 'recent';
+      currentSector = '';
+      minDiscount = 0;
+      sortBy = 'recent';
+      searchQuery = '';
+      searchInput.value = '';
+      searchInputMobile.value = '';
+      renderDeals();
+    });
 
     // Inicialização com busca dinâmica
     loadDynamicDeals();
