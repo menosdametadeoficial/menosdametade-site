@@ -77,7 +77,38 @@
       background: #334155;
       border-radius: 9999px;
     }
+
+    /* ===== Tema claro (botão de sol/lua no topo): troca as cores escuras fixas por claras ===== */
+    html.light body { background-color: #f8fafc; color: #0f172a; }
+    html.light .bg-slate-900, html.light .bg-slate-900\/60, html.light .bg-slate-900\/80,
+    html.light .bg-\[\#0f172a\] { background-color: #ffffff !important; }
+    html.light .bg-slate-950, html.light .bg-slate-950\/60, html.light .bg-\[\#0b0f19\] { background-color: #f1f5f9 !important; }
+    html.light .bg-slate-800, html.light .bg-slate-800\/60, html.light .bg-slate-800\/80 { background-color: #f1f5f9 !important; }
+    html.light .bg-slate-700, html.light .bg-slate-700\/80, html.light .hover\:bg-slate-700:hover { background-color: #e2e8f0 !important; }
+    html.light .hover\:bg-orange-500:hover { background-color: #f97316 !important; color: #ffffff !important; }
+    html.light .border-slate-800, html.light .border-slate-800\/80 { border-color: #e2e8f0 !important; }
+    html.light .border-slate-700, html.light .border-slate-700\/80 { border-color: #cbd5e1 !important; }
+    html.light .from-slate-900 { background-image: none !important; background-color: #ffffff !important; }
+    html.light #vip { background-image: none !important; background-color: #fff7ed !important; }
+    html.light .text-slate-400, html.light .text-slate-500 { color: #64748b !important; }
+    html.light .text-slate-300, html.light .text-slate-200 { color: #334155 !important; }
+    html.light .text-emerald-400 { color: #059669 !important; }
+    html.light .text-sky-300 { color: #0284c7 !important; }
+    html.light .text-amber-300 { color: #b45309 !important; }
+    html.light .placeholder-slate-400::placeholder { color: #94a3b8; }
+    /* Texto branco vira escuro, menos em cima de botões e etiquetas coloridas */
+    html.light .text-white, html.light .hover\:text-white:hover { color: #0f172a !important; }
+    html.light :is(.bg-orange-500, .from-orange-600, .from-orange-500, .from-emerald-500, .from-emerald-600, .bg-red-500,
+                   .bg-emerald-500, .bg-\[\#229ED9\], .bg-sky-500, .bg-amber-400).text-white,
+    html.light :is(.bg-orange-500, .from-orange-600, .from-orange-500, .from-emerald-500, .from-emerald-600, .bg-red-500,
+                   .bg-emerald-500, .bg-\[\#229ED9\], .bg-sky-500) .text-white { color: #ffffff !important; }
+    html.light .filter-select { background-color: #ffffff; border-color: #cbd5e1; color: #0f172a; }
+    html.light .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; }
   </style>
+  <script>
+    // Aplica o tema salvo antes de desenhar a página (sem piscar o escuro)
+    try { if (localStorage.getItem('tema') === 'claro') document.documentElement.classList.add('light'); } catch (e) {}
+  </script>
 </head>
 <body class="min-h-screen flex flex-col font-sans antialiased selection:bg-orange-500 selection:text-white">
 
@@ -119,7 +150,13 @@
 
       <!-- Social / Group CTA Buttons -->
       <div class="flex items-center gap-2 sm:gap-2.5">
-        <a 
+        <button id="themeToggle" type="button"
+          class="inline-flex items-center justify-center w-10 h-10 bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 rounded-xl transition hover:scale-105"
+          title="Alternar tema claro/escuro" aria-label="Alternar tema claro/escuro">
+          <i class="fa-solid fa-sun text-base"></i>
+        </button>
+
+        <a
           href="https://www.instagram.com/menosdametade.oficial/" 
           target="_blank"
           class="hidden lg:inline-flex items-center justify-center w-10 h-10 bg-pink-500/10 hover:bg-pink-500/20 text-pink-400 border border-pink-500/30 rounded-xl transition hover:scale-105"
@@ -877,6 +914,19 @@
       if (searchQuery.trim()) alertTerm.value = searchQuery.trim().slice(0, 40);
       setTimeout(() => alertTerm.focus(), 400);
     });
+
+    // Tema claro/escuro: guarda a escolha neste navegador
+    const themeToggle = document.getElementById('themeToggle');
+    function syncThemeIcon() {
+      const light = document.documentElement.classList.contains('light');
+      themeToggle.innerHTML = `<i class="fa-solid ${light ? 'fa-moon' : 'fa-sun'} text-base"></i>`;
+    }
+    themeToggle.addEventListener('click', () => {
+      const light = document.documentElement.classList.toggle('light');
+      try { localStorage.setItem('tema', light ? 'claro' : 'escuro'); } catch (e) {}
+      syncThemeIcon();
+    });
+    syncThemeIcon();
 
     // Inicialização com busca dinâmica
     loadDynamicDeals();
