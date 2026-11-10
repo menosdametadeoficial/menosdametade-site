@@ -1,0 +1,21 @@
+# Menos da Metade
+
+> Curadoria de promoções e cupons de desconto das maiores lojas do Brasil (Amazon, Mercado Livre, Shopee, Magalu e KaBuM!). Só entram ofertas com desconto real, calculado pelo preço anterior informado pela loja. Cada oferta mostra a data e a hora em que o preço foi visto.
+
+O Menos da Metade não vende nada: os links levam para a loja oficial, onde acontecem pagamento, entrega e garantia. Os links são de afiliado; quando alguém compra por eles, a loja paga uma pequena comissão, sem custo extra para quem compra.
+
+## Ofertas
+
+- [Todas as ofertas](https://menosdametadeoficial.com.br/): atualizadas várias vezes por dia, com filtros por setor (tecnologia, games, casa, pet, beleza e moda), desconto mínimo e preço.
+- [Ofertas em JSON](https://menosdametadeoficial.com.br/deals.json): título, loja, preço, preço anterior, desconto, cupom, setor, link e data em que o preço foi visto.
+- [Melhores por setor](https://menosdametadeoficial.com.br/melhores.json): a melhor oferta de cada setor do dia, da semana ou do mês.
+
+## Alertas grátis
+
+- [Avise-me](https://menosdametadeoficial.com.br/#avise): a pessoa informa o produto, o preço máximo e o desconto mínimo e recebe um aviso no Telegram quando aparecer.
+- [Canal no Telegram](https://t.me/menosdametade_oficial): ofertas o dia todo.
+
+## Redes
+
+- [Instagram @menosdametade.oficial](https://www.instagram.com/menosdametade.oficial/)
+- [X @menosdametadeof](https://x.com/menosdametadeof)

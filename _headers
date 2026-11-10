@@ -5,3 +5,6 @@
   Cache-Control: no-cache
 /
   Cache-Control: no-cache
+# Mídias que o Instagram baixa para publicar: acessíveis, mas fora do Google
+/midia/*
+  X-Robots-Tag: noindex
